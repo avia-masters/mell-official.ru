@@ -1,0 +1,669 @@
+/* =============================================
+   MELLSTROY CASINO — ПРЕМИАЛЬНЫЙ СИНИЙ СТИЛЬ
+   Переливающиеся кнопки, неоновый дизайн
+   ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #0a1628;
+    --secondary: #1a2a4a;
+    --accent: #00d4ff;
+    --accent-dark: #0088ff;
+    --accent-glow: rgba(0, 212, 255, 0.15);
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: var(--primary);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding-top: 70px;
+    min-height: 100vh;
+    background-image: url('images/bg-pattern.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    opacity: 1;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(10, 22, 40, 0.92) 0%, rgba(26, 42, 74, 0.85) 50%, rgba(10, 22, 40, 0.92) 100%);
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ===== ХЕДЕР (ФИКСИРОВАННЫЙ) ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+    box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+}
+
+.brand-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon img {
+    height: 40px;
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
+}
+
+.brand-icon span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.brand-icon span span {
+    color: #00d4ff;
+}
+
+/* ===== БУРГЕР-МЕНЮ ===== */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 12px;
+    z-index: 1001;
+}
+
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #00d4ff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.burger-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.burger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    overflow-x: auto;
+    padding: 0 10px;
+    scrollbar-width: none;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.06);
+    border-color: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+/* ============================================================
+   ПЕРЕЛИВАЮЩИЕСЯ КНОПКИ (ОСНОВНОЙ СТИЛЬ)
+   ============================================================ */
+
+/* ===== КНОПКА "ИГРАТЬ" В ХЕДЕРЕ ===== */
+.bot-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #00d4ff, #0088ff);
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 25px rgba(0, 212, 255, 0.15);
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+.bot-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 35px rgba(0, 212, 255, 0.3);
+    animation: gradientShift 1.5s ease infinite;
+}
+
+.bot-button img {
+    height: 20px;
+    width: auto;
+    border-radius: 4px;
+}
+
+/* ===== ГЛАВНАЯ КНОПКА ===== */
+.main-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #00d4ff, #0088ff);
+    color: #ffffff;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.12);
+    border: none;
+    cursor: pointer;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+.main-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 50px rgba(0, 212, 255, 0.2);
+    animation: gradientShift 1.5s ease infinite;
+}
+
+.main-button.secondary {
+    background: transparent;
+    color: #00d4ff;
+    box-shadow: none;
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    animation: none;
+}
+
+.main-button.secondary:hover {
+    background: rgba(0, 212, 255, 0.06);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.05);
+    transform: translateY(-3px) scale(1.02);
+    animation: none;
+}
+
+/* ===== АНИМАЦИЯ ПЕРЕЛИВА ===== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 22, 40, 0.98);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu .nav-link {
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    text-align: center;
+}
+
+.mobile-menu .nav-link:hover,
+.mobile-menu .nav-link.active {
+    background: rgba(0, 212, 255, 0.06);
+    border-color: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+}
+
+/* ===== ГЕРОЙ (ГЛАВНЫЙ ЭКРАН) ===== */
+.hero {
+    text-align: center;
+    padding: 40px 20px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-hero {
+    max-width: 160px;
+    margin: 0 auto 20px;
+    transition: all 0.1s ease;
+    animation: floatLogo 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.15));
+}
+
+@keyframes floatLogo {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-title {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.08);
+}
+
+.hero-title span {
+    color: #00d4ff;
+    text-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
+}
+
+.hero-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 10px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.hero-description {
+    max-width: 800px;
+    margin: 20px auto 30px;
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* ===== ПРЕДУПРЕЖДЕНИЕ ===== */
+.warning {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.3px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* ===== СЕКЦИИ ===== */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    scroll-margin-top: 90px;
+}
+
+.section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
+}
+
+.section-title span {
+    color: #00d4ff;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+}
+
+/* ===== КАРТОЧКИ (GLASSMORPHISM) ===== */
+.info-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 212, 255, 0.06);
+    border-radius: 16px;
+    padding: 30px 35px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.info-block:hover {
+    border-color: rgba(0, 212, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.info-block h3 {
+    color: #00d4ff;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+.info-block p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.info-highlight {
+    border-color: rgba(0, 212, 255, 0.12);
+    background: rgba(0, 212, 255, 0.04);
+}
+
+/* ===== СЕТКИ ===== */
+.grid-2,
+.grid-3 {
+    display: grid;
+    gap: 20px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ===== КАРТОЧКИ В СЕТКАХ ===== */
+.card-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 212, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px 28px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.card-item:hover {
+    border-color: rgba(0, 212, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-item h3 {
+    color: #00d4ff;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-item p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.card-item .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* ===== ИГРОВЫЕ КАРТОЧКИ ===== */
+.game-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 212, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 212, 255, 0.15);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.game-card .game-info {
+    padding: 20px;
+}
+
+.game-card .game-info h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.game-card .game-info p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.game-card .game-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #00d4ff, #0088ff);
+    color: #ffffff;
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+.game-card .game-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.2);
+    animation: gradientShift 1.5s ease infinite;
+}
+
+/* ===== ВИП-ТАБЛИЦА ===== */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.06);
+    padding: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    min-width: 600px;
+}
+
+.data-table thead th {
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #00d4ff;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.data-table tbody td {
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(0, 212, 255, 0.03);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    letter-spacing: 1px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    header {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .brand-icon img {
+        height: 32px;
+    }
+    .brand-icon span {
+        font-size: 15px;
+    }
+
+    .burger-btn {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .bot-button {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+
+    .bot-button img {
+        height: 18px;
+    }
+
+    .hero {
+        padding: 20px 15px 20px;
+        min-height: 60vh;
+    }
+
+    .logo-hero {
+        max-width: 120px;
+    }
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 30px 15px;
+    }
+
+    .info-block {
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: clamp(26px, 5vw, 36px);
+    }
+
+    .game-card img {
+        height: 160px;
+    }
+
+    .data-table {
+        font-size: 12px;
+        min-width: 400px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
